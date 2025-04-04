@@ -1,0 +1,57 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <script >
+            
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            }
+            const symbols = ["🍀", "⭐", "⛄", "💘", "🐬"];
+
+            function update(){
+                let slots = document.getElementsByClassName("slots");
+                let letters = [];
+                for (let s of slots){
+                    const letter = symbols[getRandomInt(4)];
+                    s.innerHTML = letter;
+                    letters.push(letter);  
+                }
+                let content = ""
+                const reduced = new Set(letters);
+                alert(reduced.size)
+                if (reduced.size == 3){
+                    content = "꽝!";    
+                } else if (reduced.size == 2) {
+                    content = "2 개 맞았음."
+                } else {
+                    content = "잭팟!"
+                } 
+                document.getElementById("div").innerHTML = content;
+                return
+            }
+
+
+            function slotmachine(){
+                
+                let slot = `<div>\n`;
+                for (let i = 0; i < 3; i ++ ){
+                    slot += `<span class='slots'>${symbols[getRandomInt(4)]}</span>\n`;
+                }
+                slot += "</div>";
+                document.getElementById("slot").innerHTML = slot;
+                return
+            }
+
+
+        </script>
+        <div> 
+            
+            <div id="slot">
+                <script>slotmachine()</script>
+            </div>
+            <button type="button" onclick = "update()"> start </button>
+            <div id = "div"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>로그인</title>
+        <script src="script01.js"></script>
+    </head>
+    <body>
+        로그인 <hr>
+        <form  method="get" name="loginForm">
+            <table border="1">
+                <tr> 
+                    <td>아이디 : </td>  <td><input id="id" type="text" name="id"/></td>
+                </tr> 
+                <tr> 
+                    <td>비번 : </td>  <td><input id="pwd" type="text" name="password"/></td>
+                </tr>  
+                <tr>
+                    <td colspan="2" >
+                        <input  type="button" name="submit" onclick="login()" value="로그인"/>
+                        <input type="reset" name="reset" value="다시 입력"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

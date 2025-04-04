@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script >
+            
+            function random_color(){
+                const red = Math.floor(Math.random() * 256);
+                const green = Math.floor(Math.random() * 256);
+                const blue = Math.floor(Math.random() * 256);
+                return `color : rgb(${red},${green},${blue})`;
+            }
+            
+            function create(){
+                
+                let text = document.getElementById("input").value;
+                let chars = `<div>\n`
+
+                for (let i = 0; i < text.length; i++){
+                    chars += `<span class='chars'>${text[i]}</span>\n`;
+                }
+                chars += "</div>";
+                let div = document.getElementById("div")
+                div.innerHTML = chars;    
+            }
+
+
+            function rainbow(){
+                function changeColor(){
+                    let args = document.getElementsByClassName("chars");
+                    for (let a of args){
+                        a.setAttribute("style", random_color())
+                    }
+                    return 
+
+                }
+                setInterval(changeColor, 250);
+            } 
+
+        </script>
+    </head>
+    <body>
+        <div>
+            <input id="input" type="text" placeholder="문자를 입력하세요."/>
+            <button type="button" onclick = "create();rainbow()"> start </button>
+            <div id = "div"></div>
+        </div>
+    </body>
+</html>

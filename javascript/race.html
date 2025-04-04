@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <style>   
+            .horses {
+              width: 30px;
+              height: 30px;
+              background-color: #ec9c55;
+              position: relative;
+              text-align: center;
+              top: 0;
+              border-radius: 0 10px 10px 0;
+            }
+            .cover{
+                width: 500px;
+                height: 30px;
+                background-color: skyblue;
+                margin: 10px;
+            }
+        </style>
+        
+        <script>
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * max);
+            }
+            function run(){
+                let horses = document.getElementsByClassName("horses"); 
+                let locations = [0,0,0,0,0,0,0]
+                function running( ){
+                    for (let h = 0;h < horses.length; h ++){  
+                        let position = 470;
+                        let random = getRandomInt(50)
+                        if (locations[h] < 470 && locations[h] + random < 470){
+                            position = locations[h] + random;
+                        }  
+                        locations[h] = position;
+                        horses[h].style.left = `${position}px`;
+                    }
+                }
+                setInterval(running, 500)
+                return
+            }
+            function draw_horse(){
+                
+                let horse = document.getElementById("horse") ;
+                let horse_chars = ""
+                for (let i =0 ; i < 7 ; i++){
+                    horse_chars += `<div class='cover'><div class='horses'>${i}</div></div>`
+                } 
+                horse.innerHTML = horse_chars
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <div id=horse >
+                <script>draw_horse()</script>
+            </div> 
+            <button type="button" onclick = "run()"> start </button> 
+        </div>
+    </body>
+</html>
